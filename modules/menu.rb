@@ -47,6 +47,7 @@ module Menu
   end
 
   def exit_app
+    save_data(@books, @labels)
     system('clear')
     print "\n\n\n\t\t\t", '|| ', '=' * 8, ' Thanks You! ', '=' * 8, ' ||', "\n\n\n"
     exit
