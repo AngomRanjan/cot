@@ -1,11 +1,10 @@
 require_relative 'item'
-require 'securerandom'
 
 class Label
   attr_accessor :title, :color
   attr_reader :id, :items
 
-  def initialize(title, color, id = SecureRandom.uuid)
+  def initialize(title, color, id = Random.rand(1..5_000_000))
     @id = id
     @title = title
     @color = color

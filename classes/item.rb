@@ -1,15 +1,16 @@
 require 'date'
-require 'securerandom'
 
 class Item
   attr_accessor :publish_date, :archived, :id
   attr_reader :genre, :author, :source, :label
 
-  def initialize(publish_date, archived: false)
-    @id = SecureRandom.uuid
+  # rubocop:disable Style/OptionalBooleanParameter
+  def initialize(publish_date, archived = false)
+    @id = Random.rand(1..5000)
     @publish_date = publish_date
     @archived = archived
   end
+  # rubocop:enable Style/OptionalBooleanParameter
 
   def add_genre(genre)
     @genre = genre

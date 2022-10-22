@@ -43,11 +43,11 @@ module Menu
       state = (1..3).include?(sel = gets.chomp.to_i)
       err_msg = 'Invalid Choice!'
     end
-    p main_items[item][:sub_menu][sel]
-    $stdin.getch
+    app_run(main_items[item][:sub_menu][sel])
   end
 
   def exit_app
+    save_data(@books, @labels)
     system('clear')
     print "\n\n\n\t\t\t", '|| ', '=' * 8, ' Thanks You! ', '=' * 8, ' ||', "\n\n\n"
     exit
