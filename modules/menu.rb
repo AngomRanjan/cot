@@ -43,8 +43,7 @@ module Menu
       state = (1..3).include?(sel = gets.chomp.to_i)
       err_msg = 'Invalid Choice!'
     end
-    p main_items[item][:sub_menu][sel]
-    $stdin.getch
+    app_run(main_items[item][:sub_menu][sel])
   end
 
   def exit_app

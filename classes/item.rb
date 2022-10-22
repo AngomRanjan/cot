@@ -26,6 +26,11 @@ class Item
     @author.items.push(self) unless @author.items.include?(self)
   end
 
+  def add_source(source)
+    @source = source
+    @source.items.push(self) unless @source.items.include?(self)
+  end
+
   def move_to_archive
     @archived = true if can_be_archived?
   end
