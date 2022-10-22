@@ -48,4 +48,8 @@ module CrudItem
     list_item(@labels) { |lbl| puts "Title: '#{lbl.title}', Color: #{lbl.color}" }
     back_mm
   end
+
+  def add_album
+    ##
+  end
 end
