@@ -48,6 +48,8 @@ module Menu
 
   def exit_app
     save_data(@books, @labels)
+    save_music_data(@music_albums, @genres, @genre_names)
+    save_games_data(@games, @authors)
     system('clear')
     print "\n\n\n\t\t\t", '|| ', '=' * 8, ' Thanks You! ', '=' * 8, ' ||', "\n\n\n"
     exit
