@@ -28,4 +28,19 @@ module Crud
     add_music_album(@music_albums, create_music_album)
     back_mm
   end
+
+  def show_games
+    ListGames.new.list_games(@games)
+    back_mm
+  end
+
+  def show_authors
+    ListAuthor.new.list_authors(@authors)
+    back_mm
+  end
+
+  def add_games
+    create_game(@games)
+    back_mm
+  end
 end

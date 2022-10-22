@@ -14,6 +14,13 @@ require_relative './classes/list_music_data'
 require_relative './modules/save_music_album'
 require_relative './modules/load_music_album'
 
+require_relative './modules/load_author'
+require_relative './modules/load_game'
+require_relative './classes/list_games'
+require_relative './classes/list_author'
+require_relative './modules/save_games'
+require_relative './classes/author'
+
 require 'json'
 
 class App
@@ -23,6 +30,9 @@ class App
   include LoadBookData
   include LoadMusicData
   include SaveMusicData
+  include GameModule
+  include SaveGameData
+  include AuthorModule
 
   attr_accessor :books, :labels, :authors, :games
   attr_reader :music_albums, :genres
@@ -34,6 +44,8 @@ class App
     @music_albums = load_music_albums
     @genre_names = load_genres_names
     @genres = load_music_genres
+    @games = fetch_games
+    @authors = fetch_authors
   end
 
   def start
