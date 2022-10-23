@@ -39,20 +39,11 @@ module Menu
       system('clear')
       printf "%s Sub-Menu\n\n", main_items[item][:name]
       sub_menu_items[item].each_with_index { |x, i| printf "%<a>5d.  %<b>-16s\n", a: i + 1, b: x }
-      printf "\n%<a>s\nPlease enter your choice[%<b>d - %<c>d]", a: err_msg, b: 1, c: sub_menu_items[item].length
+      printf "\n%<a>s\nPlease enter your choice[%<b>d - %<c>d]: ", a: err_msg, b: 1, c: sub_menu_items[item].length
       state = (1..3).include?(sel = gets.chomp.to_i)
       err_msg = 'Invalid Choice!'
     end
     app_run(main_items[item][:sub_menu][sel])
-  end
-
-  def exit_app
-    save_data(@books, @labels)
-    save_music_data(@music_albums, @genres, @genre_names)
-    save_games_data(@games, @authors)
-    system('clear')
-    print "\n\n\n\t\t\t", '|| ', '=' * 8, ' Thanks You! ', '=' * 8, ' ||', "\n\n\n"
-    exit
   end
 
   def app_run(func)
