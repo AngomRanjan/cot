@@ -1,40 +1,21 @@
-require_relative '../classes/music_album'
 require_relative '../classes/genre'
-require_relative '../classes/item'
-require_relative '../classes/create_music_album'
-require_relative '../classes/list_music_data'
-require_relative '../app'
+require_relative '../classes/music_album'
 
 describe Genre do
-  before(:all) do
-    @jazz = Genre.new('jazz')
-    @album = MusicAlbum.new('2000-12-06', false)
-    @jazz.add_item(@album)
-    @app = App.new
-  end
   context 'test class properties' do
+    jazz = Genre.new('jazz')
+    album = MusicAlbum.new('2000-12-06', false)
+    jazz.add_item(album)
     it 'check if genre is an instance' do
-      expect(@jazz).to be_an_instance_of Genre
+      expect(jazz).to be_an_instance_of Genre
     end
 
     it 'confirm name of genre' do
-      expect(@jazz.name).to eql('jazz')
+      expect(jazz.name).to eql('jazz')
     end
 
     it 'add item (music album)' do
-      expect(@jazz.items).to include(@album)
-    end
-
-    context 'test app methods for genre' do
-      before(:all) do
-        @genres = []
-        @genre_names = []
-      end
-
-      it 'add a new genre to list' do
-        add_genre(@genres, @jazz)
-        expect(@genres).to include(@jazz)
-      end
+      expect(jazz.items).to include(album)
     end
   end
 end

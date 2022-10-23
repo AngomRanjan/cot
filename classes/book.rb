@@ -4,10 +4,23 @@ class Book < Item
   attr_accessor :title, :publisher, :cover_state
 
   def initialize(title, publisher, cover_state, publish_date)
-    super(publish_date, archived)
+    super(publish_date, archived: false)
     @title = title
     @publisher = publisher
     @cover_state = cover_state
+  end
+
+  # Serialize book object with its class name and arguments
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'a' => [title, publisher, cover_state, publish_date]
+    }.to_json(*args)
+  end
+
+  # Deserialize JSON string by constructing new Foo object with arguments.
+  def self.json_create(object)
+    new(*object['a'])
   end
 
   private

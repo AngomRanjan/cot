@@ -10,6 +10,19 @@ class Game < Item
     @last_played_at = last_played_at
   end
 
+  # Serialize Games object with its class name and arguments
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'a' => [multiplayer, last_played_at, publish_date]
+    }.to_json(*args)
+  end
+
+  # Deserialize JSON string by constructing new Games object with arguments.
+  def self.json_create(object)
+    new(*object['a'])
+  end
+
   private
 
   def can_be_archived?
